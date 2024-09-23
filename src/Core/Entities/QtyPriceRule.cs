@@ -1,6 +1,8 @@
+using Core.Common;
+
 namespace Core.Entities;
 
-public class QtyPriceRule : IPriceRule
+public class QtyPriceRule : BaseEntity, IPriceRule
 {
     public Guid ProductId { get; init; }
     public string ProductSku { get; init; }
@@ -9,6 +11,7 @@ public class QtyPriceRule : IPriceRule
 
     public QtyPriceRule(Guid productId, string productSku, decimal price)
     {
+        Id = Guid.NewGuid();
         ProductId = productId;
         ProductSku = productSku;
         Price = price;

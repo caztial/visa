@@ -9,6 +9,11 @@ public class PriceList : BaseEntity, IAggregatedRoot
     readonly ICollection<IPriceRule> _productPriceRules = [];
     public IEnumerable<IPriceRule> ProductPriceRules => _productPriceRules;
 
+    public PriceList()
+    {
+        Id = Guid.NewGuid();
+    }
+
     public void AddProductPriceRule(IPriceRule productPrice)
     {
         _productPriceRules.Add(productPrice);

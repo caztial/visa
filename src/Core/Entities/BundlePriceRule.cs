@@ -1,6 +1,8 @@
+using Core.Common;
+
 namespace Core.Entities;
 
-public class BundlePriceRule : IBundledPriceRule
+public class BundlePriceRule : BaseEntity, IBundledPriceRule
 {
     public Guid ProductId { get; init; }
     public string ProductSku { get; init; }
@@ -17,6 +19,7 @@ public class BundlePriceRule : IBundledPriceRule
         decimal unitPrice
     )
     {
+        Id = Guid.NewGuid();
         ProductId = productId;
         ProductSku = productSku;
         BundleSize = bundleSize;

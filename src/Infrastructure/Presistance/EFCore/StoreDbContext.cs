@@ -20,4 +20,11 @@ public class StoreDbContext : DbContext
     // special "local" folder for your platform.
     protected override void OnConfiguring(DbContextOptionsBuilder options) =>
         options.UseSqlite($"Data Source={DbPath}");
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        // table per type inheritance
+        modelBuilder.Entity<QtyPriceRule>().ToTable("QtyPriceRules");
+        modelBuilder.Entity<BundlePriceRule>().ToTable("BundlePriceRules");
+    }
 }
